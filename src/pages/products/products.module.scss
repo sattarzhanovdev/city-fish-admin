@@ -1,0 +1,46 @@
+.addProducts{
+  width: 90%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 100px 0;
+  .up{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 2px solid black;
+    button{
+      width: 200px;
+      height: 34px;
+      border-radius: 50px;
+      border: 0;
+      background: #4caf50;
+      color: white;
+    }
+  }
+  .down{
+    width: 90%;
+    table{
+      tbody{
+        tr{
+          cursor: pointer;
+          &:hover{
+            background: #F5F5F5;
+          }
+          td{
+            img{
+              width: 35px;
+              height: 35px;
+              object-fit: cover;
+              object-position: center;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
