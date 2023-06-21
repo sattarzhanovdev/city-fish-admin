@@ -56,6 +56,17 @@
         }
       }
     }
+    .amount{
+      .right{
+        margin-right: 70px;
+        input{
+          width: 500px !important;
+        }
+        select{
+          width: 100px;
+        }
+      }
+    }
     button{
       width: 150px;
       height: 36px;

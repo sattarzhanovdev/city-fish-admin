@@ -21,13 +21,13 @@ const Products = () => {
 
         setProducts(result)
       })
-  }, [])
+  }, [dep])
 
   const Navigate = useNavigate()
 
   const delete_product = (id) => {
     API.deleteProduct(id)
-      .then(res => setDep(res.data))
+      .then(res => setDep(Math.random()))
   }
 
 

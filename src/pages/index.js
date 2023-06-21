@@ -1,11 +1,15 @@
 import Add from "./add";
+import Declined from "./declined";
 import Main from "./main";
 import More from "./more";
 import Products from "./products";
+import Success from "./success";
 
 export const Pages = {
   Main,
   More,
   Products,
-  Add
+  Add,
+  Success,
+  Declined 
 }

@@ -2,4 +2,52 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 50px;
+  .statistic{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    .card{
+      display: flex;
+      align-items: center;
+      .left{
+        list-style: none;
+        width: 90px;
+        height: 100px;
+        background: orangered;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li{
+          font-size: 30px;
+          margin: 0;
+          padding: 0;
+          color: white;
+        }
+      }
+      .right{
+        width: 220px;
+        padding-left: 25px;
+        background: #242C30;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        @media (max-width: 425px) {
+          width: 160px;
+        }
+        h3{
+          font-size: 20px;
+          color: white;
+          @media (max-width: 425px) {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
 }

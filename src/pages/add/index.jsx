@@ -10,12 +10,8 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import { storage } from '../../App'
 
 const Add = () => {
-  const [ categories, setCategories ] = React.useState(null)
-  const [ category, setCategory ] = React.useState(null)
-  const [ ingredientsId, setIngredientsId ] = React.useState(null)
-  const [ dep, setDep ] = React.useState(null)
-  const [ page, setPage ] = React.useState(1)
   const [ active, setActive ] = React.useState(false)
+  const [ typeMass, setTypeMass ] = React.useState('')
 
   const {
     register,
@@ -25,9 +21,6 @@ const Add = () => {
 
   const Navigate = useNavigate()
 
-  const categoryId = categories?.find(categ => categ.title === category) 
-  const productId = localStorage.getItem('productId')
-  
   const posted = () => {
     setActive(true)
     setTimeout(() => {
@@ -52,15 +45,14 @@ const Add = () => {
         .then((downloadURL) => {
           API.postProduct(
             {
-              title: data.title, 
-              desc: data.desc,
-              price: data.price,
-              category: data.category, 
+              ...data,
+              typeMass: typeMass,
               image: downloadURL
             }
-          )
+          ).then(() => {
+            posted()
+          })
 
-          posted()
         });
     })
   }
@@ -109,6 +101,22 @@ const Add = () => {
             type="text"
             {...register('desc')}
           />
+        </div>
+        <div className={cls.amount}>
+          <p>Вес / количество</p>
+          <div className={cls.right}>
+            <input 
+              type="text"
+              {...register('mass')}
+            />
+            <select 
+              onChange={e => setTypeMass(e.target.value)}
+            >
+              <option value="гр" selected>Грамм</option>
+              <option value="л">Литр</option>
+              <option value="шт">Штук</option>
+            </select>
+          </div>
         </div>
         <div>
           <p>Фото</p>

@@ -2,13 +2,24 @@ import React from 'react'
 import c from './sidebar.module.scss'
 import { SideList } from '../../utils'
 import { Link, useLocation } from 'react-router-dom'
+import { BiArrowBack } from 'react-icons/bi'
 
 const Sidebar = () => {
+  const [ active, setActive ] = React.useState(false)
   const path = useLocation().pathname
 
-
   return (
-    <div className={c.sidebar}>
+    <div className={active ? c.sidebar : c.sidebar_none}>
+      <div 
+        className={c.open}
+        onClick={() => {
+          setActive(!active)
+        }}
+      >
+        <li>
+          <BiArrowBack />
+        </li>
+      </div>
       <ul className={c.logo}>
         <img 
           src="/img/logo.png" 

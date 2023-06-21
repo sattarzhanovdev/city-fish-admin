@@ -23,7 +23,7 @@ const App = () => {
           element={<Pages.Main />}
         />
         <Route 
-          path='/more/:id'
+          path='/more/'
           element={<Pages.More />}
         />
         <Route 
@@ -33,6 +33,14 @@ const App = () => {
         <Route 
           path='/add/'
           element={<Pages.Add />}
+        />
+        <Route 
+          path='/success/'
+          element={<Pages.Success />}
+        />
+        <Route 
+          path='/declined/'
+          element={<Pages.Declined />}
         />
       </Routes>
     </div>

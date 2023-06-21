@@ -5,6 +5,7 @@ const Main = () => {
   return (
     <div>
       <Components.Statistic />
+      <Components.Orders />
     </div>
   )
 }
