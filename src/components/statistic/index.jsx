@@ -52,9 +52,6 @@ const Statistic = () => {
   }, [])
 
 
-  if(!orders) return <h3>Empty</h3>
-  if(!success) return <h3>Empty</h3>
-  if(!declined) return <h3>Empty</h3>
   return (
     <div className={c.container}>
       <div className={c.statistic}>
