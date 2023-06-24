@@ -4,6 +4,8 @@ import c from './more.module.scss'
 const More = () => {
   const data = JSON.parse(localStorage.getItem('more'))
 
+  const handlePrint = () => window.print()
+
   return (
     <div className={c.more}>
       <table>
@@ -34,6 +36,11 @@ const More = () => {
           </tr>
         </tbody>
       </table>
+      <div className={c.print}>
+        <button onClick={handlePrint}>
+          Печать
+        </button>
+      </div>
     </div>
   )
 }
