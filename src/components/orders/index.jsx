@@ -88,7 +88,7 @@ const Orders = () => {
                   
                 >{item.id}</td>
                 <td className='text-center'>{item.item.name}</td>
-                <td className='text-center'>{item.item.address}</td>
+                <td className='text-center'>{item.item.address} / {item.item.corpus}кор / {item.item.apart}кв</td>
                 <td className='text-center'>{item.item.phone}</td>
                 <td className='text-center'>{item.item.cart?.reduce((acc, obj) => acc + Number(obj.price * obj.count), 0)}.00</td>
                 <td className='d-flex justify-content-center'>
