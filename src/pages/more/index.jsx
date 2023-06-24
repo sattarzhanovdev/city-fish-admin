@@ -121,7 +121,7 @@ const More = () => {
       </table>
       <h3>Комментарий</h3>
       <p>
-        {data?.comment}
+        {data?.item?.comment}
       </p>
       <div className={c.print}>
         <button onClick={handlePrint}>
