@@ -12,7 +12,8 @@ const Statistic = () => {
   React.useEffect(() => {
     API.getOrders()
       .then(res => {
-        const result = Object.entries(res?.data)
+        if(res.data){
+          const result = Object.entries(res?.data)
           .map(([item, id]) => {
             return {
               id: id, 
@@ -20,21 +21,25 @@ const Statistic = () => {
             }
           })
         setOrders(result);
+        }
       })
     API.successOrders()
       .then(res => {
-        const result = Object.entries(res?.data)
-          .map(([item, id]) => {
-            return {
-              id: id, 
-              ...item
-            }
-          })
-        setSuccess(result);
+        if(res.data){
+          const result = Object.entries(res?.data)
+            .map(([item, id]) => {
+              return {
+                id: id, 
+                ...item
+              }
+            })
+          setSuccess(result);
+        }
       })
     API.declinedOrders()
       .then(res => {
-        const result = Object.entries(res?.data)
+        if(res.data){
+          const result = Object.entries(res?.data)
           .map(([item, id]) => {
             return {
               id: id, 
@@ -42,9 +47,14 @@ const Statistic = () => {
             }
           })
         setDeclined(result);
+        }
       })
   }, [])
 
+
+  if(!orders) return <h3>Empty</h3>
+  if(!success) return <h3>Empty</h3>
+  if(!declined) return <h3>Empty</h3>
   return (
     <div className={c.container}>
       <div className={c.statistic}>
