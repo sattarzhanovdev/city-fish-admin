@@ -13,12 +13,16 @@
     padding: 10px 0;
     border-bottom: 2px solid black;
     button{
-      width: 200px;
+      max-width: 200px;
+      min-width: 140px;
       height: 34px;
       border-radius: 50px;
       border: 0;
       background: #4caf50;
       color: white;
+      @media (max-width: 425px ) {
+        font-size: 12px;
+      }
     }
   }
   .down{

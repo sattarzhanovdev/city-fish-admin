@@ -47,16 +47,11 @@ const More = () => {
         <tbody>
           {
             <tr className='d-flex flex-column w-100'>
-                <td className='text-center'>{data.id}</td>
-                <td className='text-center'>{data.item.name}</td>
-                <td className='text-center'>{data.item.address} / {data.item.corpus} кор / {data.item.apart}кв</td>
-                <td className='text-center'>{data.item.phone}</td>
-                <td className='text-center'>{data.item.cart?.reduce((acc, obj) => acc + Number(obj.price * obj.count), 0)}.00</td>
-                <td className='d-flex justify-content-center'>
-                  <span className='text-center'>
-                    {data.item.status}
-                  </span>  
-                </td>
+                <td className='text-center'><span>ID: </span> {data.id}</td>
+                <td className='text-center'><span>Имя: </span> {data.item.name}</td>
+                <td className='text-center'><span>Адрес: </span> {data.item.address} / {data.item.corpus} кор / {data.item.apart}кв</td>
+                <td className='text-center'><span>Тел-номер: </span> {data.item.phone}</td>
+                <td className='text-center'>Сумма:  {data.item.cart?.reduce((acc, obj) => acc + Number(obj.price * obj.count), 0)}.00</td>
                 {/* <td className='text-center'>  
                   {
                     data.item.status === 'в ожидании' ?

@@ -46,7 +46,7 @@ const Products = () => {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">Фото</th>
+              <th scope="col" className='text-center'>Фото</th>
               <th scope="col" className='text-center'>Название</th>
               <th scope="col" className='text-center'>Категория</th>
               <th scope="col" className='text-center'>Цена</th>
@@ -63,14 +63,14 @@ const Products = () => {
                     localStorage.setItem('productsItem', JSON.stringify(item))
                   }}
                 >
-                  <td>
+                  <td className='text-center'>
                     <img src={item.image} alt={item.title} onClick={() => Navigate(`/product/${item.id}`)}/>
                   </td>
                   <td className='text-center'>{item.title}</td>
                   <td className='text-center'>{item.category}</td>
                   <td className='text-center'>{item.price}.00</td>
                   <td 
-                    className='text-danger' 
+                    className='text-danger text-center' 
                     role={'button'}
                     onClick={() => delete_product(item.id)} 
                   >

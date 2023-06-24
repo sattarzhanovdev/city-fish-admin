@@ -29,7 +29,7 @@ const Success = () => {
         <table>
           <thead>
             <tr>
-              <th>Имя</th>
+              <th className='text-center'>Имя</th>
               <th className='text-center'>Тел-номер</th>
               <th className='text-center'>Время</th>
             </tr>
@@ -49,7 +49,7 @@ const Success = () => {
                     })
                   }}
                 >
-                  <td>{item.item.name}</td>
+                  <td className='text-center'>{item.item.name}</td>
                   <td className='text-center'>{item.item.phone}</td>
                   <td className='text-center'>{item.item.time}</td>
                 </tr>

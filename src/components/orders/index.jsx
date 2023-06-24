@@ -6,7 +6,9 @@ import { useNavigate } from 'react-router-dom'
 const Orders = () => {
   const [ orders, setOrders ] = React.useState(null)
   const [ dep, setDep ] = React.useState('')
+  const [ length, setLen ] = React.useState(0)
   
+	const newSound = new Audio('https://firebasestorage.googleapis.com/v0/b/city-fish.appspot.com/o/success.mp3?alt=media&token=215fb2ee-17ce-4892-8b52-c0bd2840320d')
 
   const Navigate = useNavigate()
 
@@ -21,6 +23,12 @@ const Orders = () => {
             }
           })
         setOrders(result.reverse())
+        if(result.length !== length){
+          newSound.play()
+        }
+        setTimeout(() => {
+          setLen(result?.length)
+        }, 2000)
       })
 
       setTimeout(() => {

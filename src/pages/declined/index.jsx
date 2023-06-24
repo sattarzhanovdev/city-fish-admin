@@ -27,7 +27,7 @@ const Declined = () => {
       <table>
         <thead>
           <tr>
-            <th>Имя</th>
+            <th className='text-center'>Имя</th>
             <th className='text-center'>Тел-номер</th>
             <th className='text-center'>Время</th>
           </tr>
@@ -47,7 +47,7 @@ const Declined = () => {
                 })
               }}
             >
-              <td>{item.name}</td>
+              <td className='text-center'>{item.name}</td>
               <td className='text-center'>{item.phone}</td>
               <td className='text-center'>{item.time}</td>
             </tr>
