@@ -1,13 +1,112 @@
 import React from 'react'
 import c from './more.module.scss'
+import { API } from '../../api'
 
 const More = () => {
   const data = JSON.parse(localStorage.getItem('more'))
+  const [ dep, setDep ] = React.useState('')
+
+  const take_order = (id, item) => {
+    API.setOrdersStatus(id, {id: id, ...item, status: 'Принято'})
+      .then(() => setDep(Math.random()))
+  }
+
+  const delete_order = (id, status) => {
+    API.deleteOrders(id,)
+      .then(() => setDep(Math.random()))
+  }
+
+  const send_order = (id, item, data) => {
+    API.setOrdersStatus(id, {id: id, ...item, status: 'Передано курьеру'})
+      .then(() => {
+        API.postSuccessOrders(data)
+        setDep(Math.random())
+      })
+  }
+
+  const handleDelete = (data) => {
+    console.log(data.id);
+    API.postDeclinedOrders(data)
+      .then(() => {
+        API.deleteOrders(data.id)
+        .then(() => setDep(Math.random()))
+      })
+  }
+  
 
   const handlePrint = () => window.print()
 
+
+
+  
+
+
   return (
     <div className={c.more}>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col" className='text-center'>Имя</th>
+            <th scope="col" className='text-center'>Адрес</th>
+            <th scope="col" className='text-center'>Тел-номер</th>
+            <th scope="col" className='text-center'>Сумма</th>
+            <th scope="col" className='text-center d-flex justify-content-center'>Статус</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          {
+            <tr>
+                <td className='text-center'>{data.id}</td>
+                <td className='text-center'>{data.item.name}</td>
+                <td className='text-center'>{data.item.address}</td>
+                <td className='text-center'>{data.item.phone}</td>
+                <td className='text-center'>{data.item.cart?.reduce((acc, obj) => acc + Number(obj.price * obj.count), 0)}.00</td>
+                <td className='d-flex justify-content-center'>
+                  <span className='text-center'>
+                    {data.item.status}
+                  </span>  
+                </td>
+                {/* <td className='text-center'>  
+                  {
+                    data.item.status === 'в ожидании' ?
+                    <button 
+                      type="button" 
+                      className="btn btn-success "
+                      onClick={() => take_order(data.id, data)}
+                    >
+                      Принять
+                    </button>
+                    : data.item.status === 'Принято' ?
+                    <button 
+                      type="button" 
+                      className="btn btn-warning"
+                      onClick={() => send_order(data.id, data, data)}
+                    >
+                      Передано
+                    </button>
+                    : data.item.status === 'отменено' || data.status === 'получено' ?
+                    <button 
+                      type="button" 
+                      className="btn btn-danger"
+                      onClick={() => delete_order(data.id, data.status)}
+                    >
+                      Удалить
+                    </button>
+                    :
+                    ''
+                  }
+                </td> */}
+                {
+                  data.status === 'отменено' ?
+                  handleDelete(data) :
+                  null
+                }
+              </tr>
+          }
+        </tbody>
+      </table>
       <table>
         <thead>
           <tr>
