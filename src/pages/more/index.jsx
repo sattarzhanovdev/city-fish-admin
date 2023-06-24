@@ -46,13 +46,13 @@ const More = () => {
       <table  className='w-25'>
         <tbody>
           {
-            <tr className='d-flex flex-column w-100'>
+            <tr className='d-flex flex-column w-100 align-items-center'>
                 <td className='text-center'><span>ID: </span> {data.id}</td>
                 <td className='text-center'><span>Имя: </span> {data.item.name}</td>
                 <td className='text-center'><span>Адрес: </span> {data.item.address}</td>
                 <td className='text-center'><span>Корпус: </span> {data.item.corpus}</td>
                 <td className='text-center'>Этаж:  {data.item.floor}</td>
-                <td className='text-center'><span>Квартира: </span> {data.item.apart}</td>
+                <td className='text-center'><span>Квартира: </span>  {data.item.apart}</td>
                 <td className='text-center'><span>Тел-номер: </span> {data.item.phone}</td>
                 <td className='text-center'>Сумма:  {data.item.cart?.reduce((acc, obj) => acc + Number(obj.price * obj.count), 0)}.00</td>
                 {/* <td className='text-center'>  
