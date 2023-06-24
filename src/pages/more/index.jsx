@@ -43,24 +43,13 @@ const More = () => {
 
   return (
     <div className={c.more}>
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col" className='text-center'>Имя</th>
-            <th scope="col" className='text-center'>Адрес</th>
-            <th scope="col" className='text-center'>Тел-номер</th>
-            <th scope="col" className='text-center'>Сумма</th>
-            <th scope="col" className='text-center d-flex justify-content-center'>Статус</th>
-            
-          </tr>
-        </thead>
+      <table  className='w-25'>
         <tbody>
           {
-            <tr>
+            <tr className='d-flex flex-column w-100'>
                 <td className='text-center'>{data.id}</td>
                 <td className='text-center'>{data.item.name}</td>
-                <td className='text-center'>{data.item.address}</td>
+                <td className='text-center'>{data.item.address} / {data.item.corpus} кор / {data.item.apart}кв</td>
                 <td className='text-center'>{data.item.phone}</td>
                 <td className='text-center'>{data.item.cart?.reduce((acc, obj) => acc + Number(obj.price * obj.count), 0)}.00</td>
                 <td className='d-flex justify-content-center'>
