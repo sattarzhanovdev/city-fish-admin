@@ -15,5 +15,8 @@ export const CategoriesList = [
   {id: 3, title: 'Вок'},
   {id: 4, title: 'Суши'},
   {id: 5, title: 'Сеты'},
-  {id: 6, title: 'Роллы'}
+  {id: 6, title: 'Роллы'},
+  {id: 7, title: 'Классические роллы'},
+  {id: 8, title: 'Запеченные роллы'},
+  {id: 9, title: 'Жаренные роллы'},
 ]

@@ -30,6 +30,7 @@ const Declined = () => {
             <th className='text-center'>Имя</th>
             <th className='text-center'>Тел-номер</th>
             <th className='text-center'>Время</th>
+            <th className='text-center'>Сумма</th>
           </tr>
         </thead>
         <tbody>
@@ -50,6 +51,7 @@ const Declined = () => {
               <td className='text-center'>{item.name}</td>
               <td className='text-center'>{item.phone}</td>
               <td className='text-center'>{item.time}</td>
+              <td className='text-center'>{item.item.cart?.reduce((acc, obj) => acc + Number(obj.price * obj.count), 0)}.00</td>
             </tr>
           ))
           :

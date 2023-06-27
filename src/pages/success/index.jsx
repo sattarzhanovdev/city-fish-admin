@@ -1,6 +1,7 @@
 import React from 'react'
 import { API } from '../../api'
 import c from './success.module.scss'
+import { useNavigate } from 'react-router-dom'
 
 const Success = () => {
   const [successOrders, setSuccessOrders] = React.useState(null)
@@ -20,6 +21,7 @@ const Success = () => {
       })
   }, [])
   
+  const Navigate = useNavigate()
 
   return (
     <div className={c.success}>
@@ -32,6 +34,7 @@ const Success = () => {
               <th className='text-center'>Имя</th>
               <th className='text-center'>Тел-номер</th>
               <th className='text-center'>Время</th>
+              <th className='text-center'>Сумма</th>
             </tr>
           </thead>
           <tbody>
@@ -40,18 +43,11 @@ const Success = () => {
               successOrders?.map((item, i) => (
                 <tr 
                   key={i}
-                  onClick={() => {
-                    localStorage.clear('moreOrder')
-                    const local = []
-                    item.item.cart.map(data => {
-                      local.push(data)
-                      localStorage.setItem('moreOrder', JSON.stringify(local))
-                    })
-                  }}
                 >
                   <td className='text-center'>{item.item.name}</td>
                   <td className='text-center'>{item.item.phone}</td>
                   <td className='text-center'>{item.item.time}</td>
+                  <td className='text-center'>{item.item.cart?.reduce((acc, obj) => acc + Number(obj.price * obj.count), 0)}.00</td>
                 </tr>
               ))
               :
