@@ -44,10 +44,10 @@ const Success = () => {
                 <tr 
                   key={i}
                 >
-                  <td className='text-center'>{item.item.name}</td>
-                  <td className='text-center'>{item.item.phone}</td>
-                  <td className='text-center'>{item.item.time}</td>
-                  <td className='text-center'>{item.item.cart?.reduce((acc, obj) => acc + Number(obj.price * obj.count), 0)}.00</td>
+                  <td className='text-center'>{item.item.item.name}</td>
+                  <td className='text-center'>{item.item.item.phone}</td>
+                  <td className='text-center'>{item.item.item.time}</td>
+                  <td className='text-center'>{item.item.item.cart?.reduce((acc, obj) => acc + Number(obj.price * obj.count), 0)}.00</td>
                 </tr>
               ))
               :

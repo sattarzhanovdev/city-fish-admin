@@ -24,26 +24,11 @@ const More = () => {
       })
   }
 
-  const handleDelete = (data) => {
-    console.log(data.id);
-    API.postDeclinedOrders(data)
-      .then(() => {
-        API.deleteOrders(data.id)
-        .then(() => setDep(Math.random()))
-      })
-  }
-  
-
   const handlePrint = () => window.print()
-
-
-
-  
-
 
   return (
     <div className={c.more}>
-      <table  className='w-25'>
+      <table  className='d-flex' style={{width: '34.7%'}}> 
         <tbody>
           {
             <tr className='d-flex flex-column w-100 align-items-center'>
@@ -55,44 +40,18 @@ const More = () => {
                 <td className='text-center'><span>Квартира: </span>  {data.item.apart}</td>
                 <td className='text-center'><span>Тел-номер: </span> {data.item.phone}</td>
                 <td className='text-center'>Сумма:  {data.item.cart?.reduce((acc, obj) => acc + Number(obj.price * obj.count), 0)}.00</td>
-                {/* <td className='text-center'>  
-                  {
-                    data.item.status === 'в ожидании' ?
-                    <button 
-                      type="button" 
-                      className="btn btn-success "
-                      onClick={() => take_order(data.id, data)}
-                    >
-                      Принять
-                    </button>
-                    : data.item.status === 'Принято' ?
-                    <button 
-                      type="button" 
-                      className="btn btn-warning"
-                      onClick={() => send_order(data.id, data, data)}
-                    >
-                      Передано
-                    </button>
-                    : data.item.status === 'отменено' || data.status === 'получено' ?
-                    <button 
-                      type="button" 
-                      className="btn btn-danger"
-                      onClick={() => delete_order(data.id, data.status)}
-                    >
-                      Удалить
-                    </button>
-                    :
-                    ''
-                  }
-                </td> */}
-                {
-                  data.status === 'отменено' ?
-                  handleDelete(data) :
-                  null
-                }
-              </tr>
+            </tr>
           }
         </tbody>
+        <tbody>
+          {
+            <tr className='d-flex flex-column align-items-center'>
+              <td className='text-center'><span>Топпинг: </span> {data.item.topping}</td>
+              <td className='text-center'><span>Приборы: </span> {data.item.instruments}</td>
+            </tr>
+          }
+        </tbody>
+        
       </table>
       <table>
         <thead>

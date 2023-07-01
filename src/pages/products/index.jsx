@@ -19,7 +19,7 @@ const Products = () => {
             }
           })
 
-        setProducts(result)
+        setProducts(result.reverse())
       })
   }, [dep])
 

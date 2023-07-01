@@ -87,7 +87,7 @@ const Add = () => {
             {...register('category')}
             // onChange={e => setCategory(e.target.value)}
           >
-            <option defaultChecked>Выберите</option>
+            <option selected>Выберите</option>
             {
               CategoriesList?.map((item , i) => (
                 <option key={i}>{item.title}</option>
@@ -112,7 +112,8 @@ const Add = () => {
             <select 
               onChange={e => setTypeMass(e.target.value)}
             >
-              <option value="гр" selected>Грамм</option>
+              <option value="" selected>Выберите тип массы</option>
+              <option value="гр">Грамм</option>
               <option value="л">Литр</option>
               <option value="шт">Штук</option>
             </select>

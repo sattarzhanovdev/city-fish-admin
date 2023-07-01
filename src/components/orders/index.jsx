@@ -15,20 +15,24 @@ const Orders = () => {
   React.useEffect(() => {
     API.getOrders()
       .then(res => {
-        const result = Object.entries(res.data)
-          .map(([id, item]) => {
-            return {
-              id: id, 
-              item
-            }
-          })
-        // setOrders(result.reverse())
+        if(res?.data?.length !== 0){
+          const result = Object.entries(res?.data)
+            .map(([id, item]) => {
+              return {
+                id: id, 
+                item
+              }
+            })
+          setOrders(result.reverse())
+        }else{
+          setOrders([])
+        }
         // if(result.length !== length){
         //   newSound.play()
         // }
         setTimeout(() => {
-          setLen(result?.length)
-        }, 2000)
+          setLen(orders?.length)
+        }, 20000)
       })
 
       setTimeout(() => {
@@ -54,12 +58,14 @@ const Orders = () => {
       })
   }
 
-  const handleDelete = (data) => {
-    console.log(data.id);
-    API.postDeclinedOrders(data)
+  const delivered = (id, item, data) => {
+    API.setOrdersStatus(id, {id: id, ...item, status: 'Получено'})
       .then(() => {
-        API.deleteOrders(data.id)
-        .then(() => setDep(Math.random()))
+        API.postSuccessOrders(data)
+          .then(() => {
+            API.deleteOrders(id)
+            setDep(Math.random())
+          })
       })
   }
 
@@ -106,7 +112,7 @@ const Orders = () => {
                 </td>
                 <td className='text-center'>  
                   {
-                    item.item.status === 'в ожидании' ?
+                    item.item.status === 'В ожидании' ?
                     <button 
                       type="button" 
                       className="btn btn-success "
@@ -122,7 +128,15 @@ const Orders = () => {
                     >
                       Передано
                     </button>
-                    : item.item.status === 'отменено' || item.item.status === 'получено' ?
+                    : item.item.status === 'Передано курьеру' ?
+                    <button 
+                      type="button" 
+                      className="btn btn-warning"
+                      onClick={() => delivered(item.id, item.item, item)}
+                    >
+                      Доставлено
+                    </button>
+                    : item.item.status === 'Отменено' || item.item.status === 'Получено' ?
                     <button 
                       type="button" 
                       className="btn btn-danger"
@@ -134,11 +148,6 @@ const Orders = () => {
                     ''
                   }
                 </td>
-                {
-                  item.item.status === 'отменено' ?
-                  handleDelete(item.item) :
-                  null
-                }
               </tr>
             )) : 
             <tr>
