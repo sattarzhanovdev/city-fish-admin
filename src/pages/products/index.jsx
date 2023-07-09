@@ -2,7 +2,7 @@ import React from 'react'
 import cls from './products.module.scss'
 import { API } from '../../api'
 import { useNavigate } from 'react-router-dom'
-import { BiTrash } from 'react-icons/bi'
+import { BiEdit, BiTrash } from 'react-icons/bi'
 
 const Products = () => {
   const [ products, setProducts ] = React.useState(null)
@@ -70,11 +70,21 @@ const Products = () => {
                   <td className='text-center'>{item.category}</td>
                   <td className='text-center'>{item.price}.00</td>
                   <td 
-                    className='text-danger text-center' 
+                    className='text-center' 
                     role={'button'}
-                    onClick={() => delete_product(item.id)} 
                   >
-                    <BiTrash />
+                    <span
+                      className='text-danger' 
+                      onClick={() => delete_product(item.id)} 
+                    >
+                      <BiTrash />
+                    </span>
+                    <span
+                      className='text-warning' 
+                      onClick={() => Navigate(`/edit/${item.id}/`)} 
+                    >
+                      <BiEdit />
+                    </span>
                   </td>
                 </tr>
               )) : 

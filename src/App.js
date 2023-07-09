@@ -42,6 +42,10 @@ const App = () => {
           path='/declined/'
           element={<Pages.Declined />}
         />
+        <Route 
+          path='/edit/:id'
+          element={<Pages.Edit />}
+        />
       </Routes>
     </div>
   )

@@ -26,43 +26,38 @@ const Success = () => {
   return (
     <div className={c.success}>
       <h2>Успешные заказы</h2>
-      {
-        successOrders?.length !== 0 ?
-        <table>
-          <thead>
+      <table>
+        <thead>
+          <tr>
+            <th className='text-center'>Имя</th>
+            <th className='text-center'>Тел-номер</th>
+            <th className='text-center'>Время</th>
+            <th className='text-center'>Сумма</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            successOrders?.length !== 0 ? 
+            successOrders?.map((item, i) => (
+              <tr 
+                key={i}
+              >
+                <td className='text-center'>{item?.item?.name}</td>
+                <td className='text-center'>{item?.item?.phone}</td>
+                <td className='text-center'>{item?.item?.time}</td>
+                <td className='text-center'>{item?.item?.cart?.reduce((acc, obj) => acc + Number(obj.price * obj.count), 0)}.00</td>
+              </tr>
+            ))
+            : 
             <tr>
-              <th className='text-center'>Имя</th>
-              <th className='text-center'>Тел-номер</th>
-              <th className='text-center'>Время</th>
-              <th className='text-center'>Сумма</th>
+              <th>Ничего нету</th>
+              <th>ㅤ</th>
+              <th>ㅤ</th>
+              <th>ㅤ</th>
             </tr>
-          </thead>
-          <tbody>
-            {
-              successOrders ? 
-              successOrders?.map((item, i) => (
-                <tr 
-                  key={i}
-                >
-                  <td className='text-center'>{item.item.item.name}</td>
-                  <td className='text-center'>{item.item.item.phone}</td>
-                  <td className='text-center'>{item.item.item.time}</td>
-                  <td className='text-center'>{item.item.item.cart?.reduce((acc, obj) => acc + Number(obj.price * obj.count), 0)}.00</td>
-                </tr>
-              ))
-              :
-              null
-            }
-          </tbody>
-        </table>
-        : 
-        <tr>
-          <th>Ничего нету</th>
-          <th>ㅤ</th>
-          <th>ㅤ</th>
-          <th>ㅤ</th>
-        </tr>
-      }
+          }
+        </tbody>
+      </table>
     </div>
   )
 }

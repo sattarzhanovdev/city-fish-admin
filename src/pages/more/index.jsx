@@ -28,10 +28,10 @@ const More = () => {
 
   return (
     <div className={c.more}>
-      <table  className='d-flex' style={{width: '34.7%'}}> 
+      <table  className='d-flex w-30' style={{width: '18.6%'}} > 
         <tbody>
           {
-            <tr className='d-flex flex-column w-100 align-items-center'>
+            <tr className='d-flex flex-column w-30 align-items-center'>
                 <td className='text-center'><span>ID: </span> {data.id}</td>
                 <td className='text-center'><span>Имя: </span> {data.item.name}</td>
                 <td className='text-center'><span>Адрес: </span> {data.item.address}</td>
@@ -43,15 +43,6 @@ const More = () => {
             </tr>
           }
         </tbody>
-        <tbody>
-          {
-            <tr className='d-flex flex-column align-items-center'>
-              <td className='text-center'><span>Топпинг: </span> {data.item.topping}</td>
-              <td className='text-center'><span>Приборы: </span> {data.item.instruments}</td>
-            </tr>
-          }
-        </tbody>
-        
       </table>
       <table>
         <thead>

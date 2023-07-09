@@ -2,6 +2,8 @@ import axios from "axios";
 
 export const API = {
   getProducts: () => axios.get('/products.json/'),
+  getProduct: (id) => axios.get(`/products/${id}.json/`),
+  editProduct: (id, data) => axios.put(`/products/${id}.json/`, data),
   getOrders: () => axios.get('/orders.json/'),
   deleteOrders: (id) => axios.delete(`/orders/${id}.json/`),
   setOrdersStatus: (id, data) => axios.put(`/orders/${id}.json`, data),

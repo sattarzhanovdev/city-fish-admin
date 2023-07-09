@@ -112,7 +112,7 @@ const Orders = () => {
                 </td>
                 <td className='text-center'>  
                   {
-                    item.item.status === 'В ожидании' ?
+                    item.item.status.toLowerCase() === 'в ожидании' ?
                     <button 
                       type="button" 
                       className="btn btn-success "
@@ -120,7 +120,7 @@ const Orders = () => {
                     >
                       Принять
                     </button>
-                    : item.item.status === 'Принято' ?
+                    : item.item.status.toLowerCase() === 'принято' ?
                     <button 
                       type="button" 
                       className="btn btn-warning"
@@ -128,7 +128,7 @@ const Orders = () => {
                     >
                       Передано
                     </button>
-                    : item.item.status === 'Передано курьеру' ?
+                    : item.item.status.toLowerCase() === 'передано курьеру' ?
                     <button 
                       type="button" 
                       className="btn btn-warning"
@@ -136,7 +136,7 @@ const Orders = () => {
                     >
                       Доставлено
                     </button>
-                    : item.item.status === 'Отменено' || item.item.status === 'Получено' ?
+                    : item.item.status.toLowerCase() === 'отменено' || item.item.status.toLowerCase() === 'получено' ?
                     <button 
                       type="button" 
                       className="btn btn-danger"
